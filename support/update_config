@@ -39,7 +39,7 @@ class ReleaseConfig
   def merge(other)
     merged = ReleaseConfig.new
 
-    merged["addons"] = addons | other.addons
+    merged["addons"] = addons.to_a | other.addons.to_a
     merged["build_env"] = build_env.merge(other.build_env)
     merged["config_vars"] = config_vars.merge(other.config_vars)
     merged["default_process_types"] = default_process_types.merge(other.default_process_types)
