@@ -12,6 +12,11 @@ function indent() {
 
 unset GIT_DIR
 
+if [ -f $1/.build_env ]; then
+  echo "=====> Sourcing app's .build_env"
+  source $1/.build_env
+fi
+
 for BUILDPACK in $(cat $1/.buildpacks); do
   dir=$(mktemp -t buildpackXXXXX)
   rm -rf $dir
